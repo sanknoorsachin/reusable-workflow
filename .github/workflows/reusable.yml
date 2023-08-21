@@ -9,6 +9,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name : check file content
+      run : |
+       if grep -R "https://github.com/${{github.repository}}" /home/runner/actions-runner/_work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/list.txt
+       then
+        echo "string exists"
+       else
+       echo " string not found"
+       fi
     - name : zip files
       run : |
        sudo ls -ltr /home/runner/work
