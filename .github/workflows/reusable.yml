@@ -1,0 +1,21 @@
+name: Resuable workflow
+
+on:
+  workflow_call
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name : zip files
+      run : |
+       sudo ls -ltr /home/runner/work
+       zip -r /home/runner/work/${{ github.event.repository.name }}  /home/runner/work/${{ github.event.repository.name }}
+    
+    - name: REST API with curl
+      env:
+        filename : $md
+      run: |
+       curl -H "Content-Type: multipart/form-data" -F "file=@/home/runner/work/${{ github.event.repository.name }}.zip" -F "isMarkDown=$filename" http://192.168.1.105:8080/api/upload
