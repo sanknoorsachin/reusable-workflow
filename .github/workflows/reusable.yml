@@ -9,25 +9,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name : check file content
+    - name : check if git url is valid
       run : |
        if grep -R "https://github.com/${{github.repository}}" /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/list.txt
        then
         echo "VALID_URL=true" >> $GITHUB_ENV
-        echo "string exists"
+        echo "valid url"
        else
        echo "VALID_URL=false" >> $GITHUB_ENV
-       echo " string not found"
+       echo "invalid url"
        fi
       
-    - name : zip files
+    - name : zip files and publish using curl
       run : |
        echo ${{ env.VALID_URL }}
+       if ${{ env.VALID_URL }}== true
+       then
        sudo ls -ltr /home/runner/work
        zip -r /home/runner/work/${{ github.event.repository.name }}  /home/runner/work/${{ github.event.repository.name }}
-    
-    - name: REST API with curl
-      env:
-        filename : $md
-      run: |
        curl -H "Content-Type: multipart/form-data" -F "file=@/home/runner/work/${{ github.event.repository.name }}.zip" -F "isMarkDown=$filename" http://192.168.1.105:8080/api/upload
+       else
+       echo "Access denied"
