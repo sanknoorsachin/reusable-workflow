@@ -13,16 +13,16 @@ jobs:
       run : |
        if grep -R "https://github.com/${{github.repository}}" /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/list.txt
        then
-        isValidUrl= true 
+        echo "validUrl=true" >> $GITHUB_ENV
         echo "string exists"
        else
-        isValidUrl= false
+       echo "validUrl=false" >> $GITHUB_ENV
        echo " string not found"
        fi
-       echo "$isValidUrl"
+      
     - name : zip files
       run : |
-       echo "$isValidUrl"
+       echo env.validUrl
        sudo ls -ltr /home/runner/work
        zip -r /home/runner/work/${{ github.event.repository.name }}  /home/runner/work/${{ github.event.repository.name }}
     
