@@ -22,9 +22,10 @@ jobs:
       
     - name : zip files and publish using curl
       run : |
-       echo ${{ env.VALID_URL }}
        if [[ ${{ env.VALID_URL }} == true ]]
+         then
        sudo ls -ltr /home/runner/work
        zip -r /home/runner/work/${{ github.event.repository.name }}  /home/runner/work/${{ github.event.repository.name }}
        curl -H "Content-Type: multipart/form-data" -F "file=@/home/runner/work/${{ github.event.repository.name }}.zip" -F "isMarkDown=$filename" http://192.168.1.105:8080/api/upload
-      
+         else
+       echo "publishing failed"  
