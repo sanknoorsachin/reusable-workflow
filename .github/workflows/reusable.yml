@@ -21,7 +21,7 @@ jobs:
        fi
       
     - name : zip files and publish using curl
-      if: env.VALID_URL != false
+      if: ${{env.VALID_URL}} != false
       run : |
        sudo ls -ltr /home/runner/work
        zip -r /home/runner/work/${{ github.event.repository.name }}  /home/runner/work/${{ github.event.repository.name }}
