@@ -19,6 +19,7 @@ jobs:
         isValidUrl= false
        echo " string not found"
        fi
+       echo "$isValidUrl"
     - name : zip files
       run : |
        echo "$isValidUrl"
