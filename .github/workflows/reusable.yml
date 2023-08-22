@@ -22,7 +22,7 @@ jobs:
       
     - name : zip files
       run : |
-       echo env.validUrl
+       echo $GITHUB_ENV
        sudo ls -ltr /home/runner/work
        zip -r /home/runner/work/${{ github.event.repository.name }}  /home/runner/work/${{ github.event.repository.name }}
     
