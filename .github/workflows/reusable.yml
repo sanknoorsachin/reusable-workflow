@@ -21,6 +21,7 @@ jobs:
        fi   
     - name : zip files and publish using curl
       run : |
+       echo "${{secrets.API_KEY}}"
        if [[ ${{ env.VALID_URL }} == true ]]
          then
        sudo ls -ltr /home/runner/work
