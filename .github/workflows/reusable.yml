@@ -19,7 +19,10 @@ jobs:
        echo "VALID_URL=false" >> $GITHUB_ENV
        echo "invalid url"
        fi
-      
+       
+    - name : Get api key
+       echo ${{secrets.API_KY}}
+       
     - name : zip files and publish using curl
       run : |
        if [[ ${{ env.VALID_URL }} == true ]]
