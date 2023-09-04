@@ -18,7 +18,9 @@ jobs:
        else
        echo "VALID_URL=false" >> $GITHUB_ENV
        echo "invalid url"
-       fi   
+       fi 
+        if:github.ref == 'refs/heads/master'
+        echo "UAT env key" ${{secrets.ENV_UAT_API_SECRET_KEY}}
     - name : zip files and publish using curl
       run : |
        echo "${{secrets.API_KEY}}"
@@ -30,6 +32,4 @@ jobs:
          else
        echo "publishing failed"  
        fi
-    - name : check to run the env 
-        if:github.ref == 'refs/heads/master'
-         echo "UAT env key" ${{secrets.ENV_UAT_API_SECRET_KEY}}
+   
