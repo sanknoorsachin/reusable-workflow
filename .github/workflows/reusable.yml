@@ -30,3 +30,6 @@ jobs:
          else
        echo "publishing failed"  
        fi
+    - name : check to run the env 
+        if:github.ref == 'refs/heads/master'
+         echo "UAT env key" ${{secrets.ENV_UAT_API_SECRET_KEY}}
