@@ -19,7 +19,7 @@ jobs:
        echo "VALID_URL=false" >> $GITHUB_ENV
        echo "invalid url"
        fi 
-       if github.ref == 'refs/heads/master'
+       if {{github.ref}} == 'refs/heads/master'
         then
         echo "UAT env key" ${{secrets.ENV_UAT_API_SECRET_KEY}} 
         else
