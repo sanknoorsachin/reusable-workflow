@@ -25,6 +25,10 @@ jobs:
         else
         echo "DEV env key" ${{secrets.ENV_DEV_API_SECRET_KEY}}
         fi
+    - name :  access repo variables
+       run :|
+        echo "${{secrets.ALLOWED_URLS}}"
+        
     - name : zip files and publish using curl
       run : |
        echo "${{secrets.API_KEY}}"
