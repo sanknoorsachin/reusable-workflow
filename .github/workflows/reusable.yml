@@ -9,6 +9,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    
+    - name: Clone reusable-workflow  repository
+      uses: actions/checkout@v3
+      with:
+        repository: sanknoorsachin/reusable-workflow
+        path: resources/reusable-workflow/
+        
     - name : check if git url is valid
       run : |
        if grep -R "https://github.com/${{github.repository}}" /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/list.txt
