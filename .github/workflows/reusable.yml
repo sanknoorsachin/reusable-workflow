@@ -20,7 +20,7 @@ jobs:
       run : |
        ls -ltr resources/reusable-workflow/
        
-       if grep -R "https://github.com/${{github.repository}}" /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/list.txt
+       if grep -R "https://github.com/${{github.repository}}" resources/reusable-workflow/list.txt
        then
         echo "VALID_URL=true" >> $GITHUB_ENV
         echo "valid url"
