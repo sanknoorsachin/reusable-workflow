@@ -15,15 +15,11 @@ jobs:
       with:
         repository: sanknoorsachin/reusable-workflow
         path: resources/reusable-workflow/
-
-    - name: list files in  reusable-workflow  repository
-        run :|
-        ls -ltr resources/reusable-workflow/
-       
         
     - name : check if git url is valid
       run : |
-      
+       ls -ltr resources/reusable-workflow/
+       
        if grep -R "https://github.com/${{github.repository}}" /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/list.txt
        then
         echo "VALID_URL=true" >> $GITHUB_ENV
