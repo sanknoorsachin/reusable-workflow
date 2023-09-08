@@ -39,8 +39,8 @@ jobs:
         
     - name : zip files and publish using curl
       run : |
-       echo "${{secrets.API_KEY}}"
-       echo "${{secrets.ALLOWED_URLS}}"
+       echo "${{secrets.REPO_API_KEY}}"
+     
        if [[ ${{ env.VALID_URL }} == true ]]
          then
        sudo ls -ltr /home/runner/work
