@@ -17,7 +17,6 @@ jobs:
         token: ${{ secrets.API_KEY }}
         path: resources/reusable-workflow/
 
-         echo "${{ secrets.API_KEY }}"
         
     - name : check if git url is valid
       run : |
