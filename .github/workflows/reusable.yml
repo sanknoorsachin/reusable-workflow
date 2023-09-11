@@ -14,7 +14,6 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: sanknoorsachin/reusable-workflow
-        token: ${{ secrets.API_KEY }}
         path: resources/reusable-workflow/
 
         
