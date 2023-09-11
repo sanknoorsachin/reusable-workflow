@@ -19,7 +19,7 @@ jobs:
         
     - name : check if git url is valid
       run : |
-       echo $TEST_API_KEY
+     
        ls -ltr resources/reusable-workflow/
        
        if grep -R "https://github.com/${{github.repository}}" resources/reusable-workflow/list.txt
