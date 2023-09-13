@@ -19,7 +19,7 @@ jobs:
         
     - name : check if git url is valid
       run : |
-     
+       ::add-mask::
        ls -ltr resources/reusable-workflow/
        
        if grep -R "https://github.com/${{github.repository}}" resources/reusable-workflow/list.yml
@@ -30,13 +30,6 @@ jobs:
        echo "VALID_URL=false" >> $GITHUB_ENV
        echo "invalid url"
        fi 
-       if {{github.ref}} == 'refs/heads/master'
-        then
-        echo "UAT env key" ${{secrets.ENV_UAT_API_SECRET_KEY}} 
-        else
-        echo "DEV env key" ${{secrets.ENV_DEV_API_SECRET_KEY}}
-        fi
-  
        
         
     - name : zip files and publish using curl
